@@ -1,0 +1,22 @@
+server:
+  port: 8821
+
+spring:
+  application:
+    name: event-log-processor
+  datasource:
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    url: jdbc:hsqldb:file:db/eventalerts_data;DB_CLOSE_DELAY=1000
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+app:
+  log-analyser:
+    alertThresholdMs: 4
+    recordPersistLimit: 1000
+    readLineLimit: 100
+    threadPoolSize: 10
+
