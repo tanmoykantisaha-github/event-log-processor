@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.assignment.eventlog.appconfig.ApplicationConfigData;
-import com.assignment.eventlog.domainobjects.Event;
-import com.assignment.eventlog.domainobjects.EventAlert;
+import com.assignment.eventlog.model.Event;
+import com.assignment.eventlog.model.EventAlert;
 
 @Component
 public class EventCache {

@@ -1,4 +1,4 @@
-package com.assignment.eventlog.domainobjects;
+package com.assignment.eventlog.model;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.assignment.eventlog.domainobjects;
+package com.assignment.eventlog.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,19 +18,14 @@ import lombok.Setter;
 @Table(name = "event_alerts")
 public class EventAlert {
     @Id
-    @JsonProperty("id")
     private String id;
 
-    @JsonProperty("duration")
     private int duration;
 
-    @JsonProperty("type")
     private EventType type;
 
-    @JsonProperty("host")
     private String host;
 
-    @JsonProperty("alert")
     private Boolean alert;
 
     public EventAlert() {

@@ -1,21 +1,17 @@
 package com.assignment.eventlog.service;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import com.assignment.eventlog.appconfig.ApplicationConfigData;
-import com.assignment.eventlog.domainobjects.Event;
-import com.assignment.eventlog.domainobjects.EventAlert;
-import com.assignment.eventlog.domainobjects.EventLog;
+import com.assignment.eventlog.model.Event;
+import com.assignment.eventlog.model.EventAlert;
+import com.assignment.eventlog.model.EventLog;
 import com.assignment.eventlog.service.cache.EventAlertCache;
 import com.assignment.eventlog.service.cache.EventCache;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,16 +21,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class EventLogProcessor {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EventLogProcessor.class);
 	
-	@Autowired
 	private EventAlertCache eventAlertCache;
 	
-	@Autowired
 	private EventCache eventCache;
 	
-	@Autowired
 	private ApplicationConfigData appConfigData;
 	
-	
+	public EventLogProcessor(EventAlertCache eventAlertCache, EventCache eventCache,
+			ApplicationConfigData appConfigData) {
+		super();
+		this.eventAlertCache = eventAlertCache;
+		this.eventCache = eventCache;
+		this.appConfigData = appConfigData;
+	}
+
+
 	public void process(EventLog eventLog) {
         try (LineIterator lineIterator = FileUtils.lineIterator(eventLog.getLogFile())) {
             while (lineIterator.hasNext()) {
